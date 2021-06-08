@@ -1,0 +1,16 @@
+snippet main "main"
+if __name__ == '__main__':
+	${0}
+endsnippet
+
+# Recurse over directory with os.walk
+snippet walk "os.walk"
+for root, dirs, files in os.walk(${1:path}):
+	print(root, dirs, files)
+${0}
+endsnippet
+
+snippet fp "filepath"
+os.path.dirname(__file__)
+endsnippet
+
