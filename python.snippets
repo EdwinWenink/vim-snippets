@@ -3,6 +3,13 @@ if __name__ == '__main__':
 	${0}
 endsnippet
 
+snippet init "init"
+def __init__(self):
+	super.__init__()
+
+${0}
+endsnippet
+
 # Recurse over directory with os.walk
 snippet walk "os.walk"
 for root, dirs, files in os.walk(${1:path}):
