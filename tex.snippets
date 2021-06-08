@@ -21,8 +21,8 @@ snippet init "Basic template" b
 %\usepackage[dutch]{babel}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
+\usepackage[usepdftitle]{hyperref}
 \graphicspath{ {figures/}}
-
 
 \pdfsuppresswarningpagegroup=1
 
@@ -49,7 +49,37 @@ snippet toc "table of contents" b
 \tableofcontents
 endsnippet
 
-## Sections and such
+# ------------
+# Preamble
+# ------------
+
+snippet pac "Package" b
+\usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+# References
+
+snippet biblatex "import biblatex" b
+\usepackage[
+backend=${1:biber}
+]{biblatex}
+\addbibresource{${2:bibfile}.bib}
+%Setting for linebreaks of URLs in the references
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+$0
+endsnippet
+
+snippet natbib "import natbib" b
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
+$0
+endsnippet
+
+
+# -------------
+# Sections etc. 
+# -------------
 
 # Part
 snippet part "document \part"
@@ -122,15 +152,9 @@ snippet subp "\subparagraph"
 ${0}
 endsnippet
 
-snippet ni "\noindent"
-\noindent
-${0}
-endsnippet
-
-priority 100
-snippet ... "ldots" iA
-\ldots
-endsnippet
+# ------------
+# Environments
+# ------------
 
 snippet table "Table environment" b
 \begin{table}[${1:htpb}]
@@ -181,9 +205,48 @@ snippet desc "Description" b
 \end{description}
 endsnippet
 
-snippet pac "Package" b
-\usepackage[${1:options}]{${2:package}}$0
+snippet it "Add item" b
+\item $1
+$0
 endsnippet
+
+snippet quot "Quote" b
+\begin{quote}
+	$0
+\end{quote}
+endsnippet
+
+# -------------
+# Citations
+# -------------
+
+snippet cite "Default citation" 
+\cite[${1}]{${2}} ${0}
+endsnippet
+
+snippet printbib "bibliography (biblatex)" b
+\printbibliography[heading=bibintoc]
+endsnippet
+
+
+# -------------
+# Convenience
+# -------------
+
+snippet ni "\noindent"
+\noindent ${1}
+$0
+endsnippet
+
+priority 100
+snippet ... "ldots" iA
+\ldots
+endsnippet
+
+
+# -------------
+# Math
+# -------------
 
 snippet => "implies" Ai
 \implies
@@ -601,7 +664,7 @@ snippet set "set" wA
 endsnippet
 
 snippet || "mid" iA
- \mid 
+\mid 
 endsnippet
 
 
